@@ -8,13 +8,15 @@ import javax.validation.constraints.Size;
 @ManagedBean
 @ViewScoped
 public class User{
-	@NotNull(message = "You FOOL..... You triggered my trap card by not entering the first name, allowing me to place any card from my deck. I place the card POT OF GREED!")
+	@NotNull(message = "You FOOL..... You triggered my trap card by not entering the username, allowing me to place any card from my deck. I place the card POT OF GREED!")
 	@Size(min=4,max=15)
     String username = "";
-	@NotNull(message = "You FOOL..... You triggered my trap card by not entering the last name, allowing me to place any card from my deck. I place the card POT OF GREED!")
+	@NotNull(message = "You FOOL..... You triggered my trap card by not entering the password, allowing me to place any card from my deck. I place the card POT OF GREED!")
 	@Size(min=4,max=15)
     String password = "";
-    
+    String first_name ="";
+    String last_name = "";
+    int age = 0;
     public User() {
         username = "user";
         password = "password";

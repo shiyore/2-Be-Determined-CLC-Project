@@ -7,18 +7,19 @@
 <h:head>
 	<h:outputStylesheet library="css" name="styles.css" />
 	<h:outputStylesheet library="css" name="table-style.css"/>
-</h:head>
-<h:body>
-	<h:outputStylesheet library="css" name="styles.css" />
-	<h:outputStylesheet library="css" name="table-style.css"/>
+</h:head> 
+<h:body> 
 	<ui:composition template="/layouts/commonLayout.xhtml">
-		<ui:define name="title">JSF Login Page</ui:define>
+		<ui:define name="title">Login Page</ui:define>
 		<ui:define name="content">
-			<div align="center">
-				Howdy, #{user.username} #{user.password}. Your Orders are: <br/>
-			</div>
+			<h:form>
+				<h:inputText value="#{user.username}" /><br><h:messages for="username"></h:messages></br>
+				<h:inputText value="#{user.password}" />
+				<br/>
+				<h:commandButton value="Login!" action="#{loginController.onSubmit(user)}"/><br/>
+			</h:form>
+			<h:messages/>
 		</ui:define>
 	</ui:composition>
-	<!-- Set the layout and title for the page -->
 </h:body> 
 </html>

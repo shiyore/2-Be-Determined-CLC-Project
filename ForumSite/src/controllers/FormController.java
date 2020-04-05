@@ -7,13 +7,13 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
-public class RegisterController {
+public class FormController {
 	//User user;
 	
 	public String onSubmit(User user) {
 		//Forward to Test Response View along with the User Managed Bean
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
-		return "RegisterResponse.xhtml";
+		return "LoginResponse.xhtml";
 	}
 	
 }
