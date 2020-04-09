@@ -1,6 +1,12 @@
 package controllers;
 
+import beans.Post;
+import beans.Posts;
 import beans.User;
+import business.PostBusinessService;
+
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -10,10 +16,13 @@ import javax.faces.context.FacesContext;
 public class FormController {
 	//User user;
 	
-	public String onSubmit(User user) {
+	public String onSubmit() {
 		//Forward to Test Response View along with the User Managed Bean
-		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
-		return "LoginResponse.xhtml";
+		PostBusinessService service = new PostBusinessService();
+		List<Post> posts = service.getAllPosts();
+		
+		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Posts", posts);
+		return "ViewPosts.xhtml";
 	}
 	
 }

@@ -9,12 +9,9 @@ import javax.validation.constraints.Size;
 @ViewScoped
 public class Post
 {
-	@NotNull(message = "Your title must be between 1 and 35 characters")
-	@Size(min=1, max=35)
-	String title = "";
-	@NotNull(message = "Every post must have at least a little in the body!")
-	@Size(min=2, max=300)
-	String content = "";
+	int ID = 0;
+    String title = "";
+    String content = "";
     String username ="";
     int uid = 0;
     public Post() 
@@ -22,7 +19,6 @@ public class Post
         title = "Temp";
         content = "Temp";
         username = "temp";
-        uid = 1;
     }
     
     public Post(String t, String c, int u) 
@@ -51,6 +47,11 @@ public class Post
 	public int getUID()
 	{
 		return uid;
+	}
+	
+	public int getID()
+	{
+		return ID;
 	}
 	
 	public void setContent(String c)
