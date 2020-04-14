@@ -26,7 +26,7 @@ import business.UserBusinessInterface;
 public class LoginController {
 	//User user;
 	@Inject
-	public UserBusinessInterface service;
+	UserBusinessInterface service;
 		
 	
 	public String onSubmit(User user) {

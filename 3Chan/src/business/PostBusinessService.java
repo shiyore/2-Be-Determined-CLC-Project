@@ -3,6 +3,7 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -16,10 +17,11 @@ import data.PostDataService;
  * This is our EJB for users
  */
 @Stateless
-@Local(PostBusinessService.class)
+@Local(PostBusinessInterface.class)
 @LocalBean
-@Alternative
-public class PostBusinessService{
+public class PostBusinessService implements PostBusinessInterface{
+	
+
 
     /**
      * Default constructor. 
@@ -71,5 +73,23 @@ public class PostBusinessService{
     {
     	return post.getContent();
     }
+
+	@Override
+	public void test() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Post> getPosts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setPosts(List<Post> posts) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
