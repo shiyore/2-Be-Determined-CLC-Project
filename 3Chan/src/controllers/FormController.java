@@ -19,7 +19,7 @@ public class FormController {
 	public String onSubmit() {
 		//Forward to Test Response View along with the User Managed Bean
 		PostBusinessService service = new PostBusinessService();
-		List<Post> posts = service.getAllPosts();
+		List<Post> posts = service.getPosts();
 		
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Posts", posts);
 		return "ViewPosts.xhtml";

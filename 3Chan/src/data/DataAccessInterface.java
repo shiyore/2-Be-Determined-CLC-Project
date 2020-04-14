@@ -2,13 +2,11 @@ package data;
 
 import java.util.List;
 
-import beans.Post;
-
-public interface DataAccessInterface 
+public interface DataAccessInterface <T>
 {
-	public List<Post> findAll();
+	public List<T> findAll();
 	
-	public boolean create(Post post);
-	public boolean update(Post post);
-	public boolean delete(Post post);
+	public boolean create(T t);
+	public boolean update(T t);
+	public boolean delete(T t);
 }

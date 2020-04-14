@@ -7,16 +7,24 @@ import javax.inject.Inject;
 
 import beans.Post;
 import business.PostBusinessInterface;
-import business.PostBusinessService;
+
 
 @ManagedBean
 @ViewScoped
 public class AllPostsController {
 	
-	@Inject PostBusinessService service;
+	@Inject 
+	PostBusinessInterface service;
 	
 	public String onSubmit(Post post) {
+		
+		service.test();
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("post", post);
 		return "ViewAllPosts.xhtml";		
+	}
+	
+	public PostBusinessInterface getService()
+	{
+		return service;
 	}
 }

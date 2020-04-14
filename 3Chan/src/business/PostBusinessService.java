@@ -1,16 +1,15 @@
 package business;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Local;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
 
 import beans.Post;
-import beans.User;
+//import beans.User;
+
 import data.PostDataService;
 
 /**
@@ -18,30 +17,20 @@ import data.PostDataService;
  */
 @Stateless
 @Local(PostBusinessInterface.class)
-@LocalBean
+@Alternative
 public class PostBusinessService implements PostBusinessInterface{
 	
-
+	@EJB
+	PostDataService service;
 
     /**
      * Default constructor. 
      */
-	Post post;
+	public Post post;
+	
     public PostBusinessService() {
         // TODO Auto-generated constructor stub
-    	post = new Post();
     	
-    }
-    
-    public List<Post> getAllPosts()
-    {
-    	List<Post> posts = new ArrayList<Post>();
-    	
-    	PostDataService service = new PostDataService();
-    	
-    	posts = service.findAll();
-    	
-    	return posts;
     }
 
     //the usual getters and setters
@@ -82,14 +71,19 @@ public class PostBusinessService implements PostBusinessInterface{
 
 	@Override
 	public List<Post> getPosts() {
-		// TODO Auto-generated method stub
-		return null;
+		/*List<Post> posts = new ArrayList<Post>();
+    	
+    	PostDataService service = new PostDataService();
+    	
+    	posts = service.findAll();*/
+    	
+    	return service.findAll();
+		
 	}
 
 	@Override
 	public void setPosts(List<Post> posts) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

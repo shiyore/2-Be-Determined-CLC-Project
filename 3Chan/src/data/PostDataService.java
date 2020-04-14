@@ -8,9 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Post;
+import javax.ejb.Local;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
-public class PostDataService implements DataAccessInterface 
+import beans.Post;
+@Stateless
+@Local(DataAccessInterface.class)
+@LocalBean
+public class PostDataService implements DataAccessInterface<Post>
 {
 
 	public PostDataService()

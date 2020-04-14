@@ -21,7 +21,7 @@
 		<ui:define name="content">
 			<div align="center">
 				<br/>
-				<h:dataTable value="#{allPostsController.service.orders}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd-row, order-table-even-row">
+				<h:dataTable value="#{allPostsController.service.posts}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd-row, order-table-even-row">
 					<h:column>
 						<f:facet name="header">Title</f:facet>
 						#{o.title}
