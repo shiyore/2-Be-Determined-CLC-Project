@@ -1,5 +1,6 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -22,7 +23,8 @@ public class PostBusinessService implements PostBusinessInterface{
 	
 	@EJB
 	PostDataService service;
-
+	
+	List<Post> posts = new ArrayList<Post>();
     /**
      * Default constructor. 
      */
@@ -82,8 +84,9 @@ public class PostBusinessService implements PostBusinessInterface{
 	}
 
 	@Override
-	public void setPosts(List<Post> posts) {
+	public void setPosts(List<Post> postss) {
 		// TODO Auto-generated method stub
+		this.posts = postss;
 	}
 
 }
