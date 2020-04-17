@@ -80,15 +80,16 @@ public class PostDataService implements DataAccessInterface<Post>
 		String password = "root";
 		String title = post.getTitle();
 		String content = post.getContent();
-		int u_id = post.getUID();
-		String sql = "INSERT INTO tchan.posts(ID, TITLE, CONTENT, U_ID) VALUES (NULL, " + title + ", " + content + ", " + u_id + ")";
+		//int u_id = post.getUID();
+		int u_id = 1;
+		String sql = "INSERT INTO tchan.posts(id, title, content, u_id) VALUES (NULL, " + title + ", " + content + ", " + u_id + ")";
 		try
 		{
 			conn = DriverManager.getConnection(url, username, password);
 			
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.close();
+			stmt.executeUpdate(sql);
+			stmt.close();
 		}
 		catch (SQLException e)
 		{
@@ -185,6 +186,50 @@ public class PostDataService implements DataAccessInterface<Post>
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public Post findPost(int id) 
+	{
+		Connection conn = null;
+		String url = "jdbc:postgresql://localhost:5432/postgres";
+		String username = "postgres";
+		String password = "root";
+		String sql = "SELECT * FROM tchan.posts WHERE id = " + id + "";
+		Post post = new Post();
+		try
+		{
+			conn = DriverManager.getConnection(url, username, password);
+			System.out.println("HEYYYYYY GOT CONNNNNNNN");
+			
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			post.setTitle(rs.getString("title"));
+			post.setContent(rs.getString("content"));
+			rs.close();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+			System.out.println("Aiden is bad at Overwatch");
+			System.exit(0);
+		}
+		finally
+		{
+			if(conn != null)
+			{
+				try
+				{
+					conn.close();
+				}
+				catch (SQLException e)
+				{
+					//e.printStackTrace();
+					System.out.println("Aiden is a power bottom");
+				}
+			}
+		}
+		return post;
 	}
 
 }

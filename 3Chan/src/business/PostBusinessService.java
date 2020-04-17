@@ -88,5 +88,17 @@ public class PostBusinessService implements PostBusinessInterface{
 		// TODO Auto-generated method stub
 		this.posts = postss;
 	}
+	
+	@Override
+	public void newPost(Post post)
+	{
+		service.create(post);
+	}
+	
+	@Override
+	public void editPost(int id, String titl, String cont)
+	{
+		
+	}
 
 }

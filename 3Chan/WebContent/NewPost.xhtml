@@ -16,7 +16,7 @@
 			<h:form>
 				<h:inputText value="#{post.title}" /><br><h:messages for="title"></h:messages></br>
 				<h:inputText value="#{post.content}" /><br/>
-				<h:commandButton value="Submit" action="#{postController.onSubmit(post)}"/><br/>
+				<h:commandButton value="Submit" action="#{newPostController.onSubmit(post)}"/><br/>
 			</h:form>
 			<h:messages/>
 		</ui:define>

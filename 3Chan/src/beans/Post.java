@@ -19,6 +19,7 @@ public class Post
         title = "Temp";
         content = "Temp";
         username = "temp";
+        uid = 1;
     }
     
     public Post(String t, String c, int u) 
@@ -27,6 +28,13 @@ public class Post
         content = c;
         username = "uid found";
         uid = u;
+    }
+    
+    public Post(String t, String c)
+    {
+    	title = t;
+    	content = c;
+    	uid = 1;
     }
 
 	public String getUsername()
