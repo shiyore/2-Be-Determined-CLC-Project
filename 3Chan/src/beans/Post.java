@@ -1,7 +1,11 @@
 package beans;
 
+import java.util.HashSet;
+import java.util.Map;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -9,11 +13,11 @@ import javax.validation.constraints.Size;
 @ViewScoped
 public class Post
 {
-	int ID = 0;
-    String title = "";
-    String content = "";
-    String username ="";
-    int uid = 0;
+	private int ID = 0;
+    private String title = "";
+    private String content = "";
+    private String username ="";
+    private int userID = 0;
     public Post() 
     {
         title = "Temp";
@@ -21,12 +25,13 @@ public class Post
         username = "temp";
     }
     
-    public Post(String t, String c, int u) 
+    public Post(String t, String c, int u , int postID) 
     {
         title = t;
         content = c;
         username = "uid found";
-        uid = u;
+        userID = u;
+        ID = postID;
     }
 
 	public String getUsername()
@@ -46,7 +51,7 @@ public class Post
 	
 	public int getUID()
 	{
-		return uid;
+		return userID;
 	}
 	
 	public int getID()
@@ -59,14 +64,20 @@ public class Post
 		this.content = c;
 	}
 	
-	public void setTitle(String t)
+	public void setTitle(String title)
 	{
-		this.title = t;
+		System.out.println(title.substring(1,title.length()-1));
+
+		this.title = title.substring(1,title.length()-1);
 	}
 	
 	public void setUsername(String n)
 	{
 		this.username = n;
+	}
+	
+	public void setID(HashSet id) {
+		this.ID = (int	)id.toArray()[0];
 	}
 
     

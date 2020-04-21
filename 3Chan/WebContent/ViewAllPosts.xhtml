@@ -23,16 +23,25 @@
 				<br/>
 				<h:dataTable value="#{allPostsController.service.posts}" var="o" styleClass="order-table" headerClass="order-table-header" rowClasses="order-table-odd-row, order-table-even-row">
 					<h:column>
+						<f:facet name="header">Post ID</f:facet>
+						#{o.ID}|
+					</h:column>
+					<h:column>
 						<f:facet name="header">Title</f:facet>
-						#{o.title}
+						#{o.title}|
 					</h:column>
 					<h:column>
 						<f:facet name="header">Content</f:facet>
-						#{o.content}
+						#{o.content}|
+						
 					</h:column>
-					<h:form>
-						<h:button></h:button>
-					</h:form>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:form>
+							<h:commandButton value="Set Post" action="#{post.setID({o.ID})}"/>
+							<h:commandButton value="Delete" action="#{allPostsController.deletePost(post)}"/>
+						</h:form>
+					</h:column>
 				</h:dataTable>
 			</div>
 		</ui:define>

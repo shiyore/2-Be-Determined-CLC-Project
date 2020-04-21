@@ -11,5 +11,6 @@ public interface PostBusinessInterface {
 	public void test();
 	public List<Post> getPosts();
 	public void setPosts(List<Post> posts);
+	public void deletePost(Post post);
 }
 

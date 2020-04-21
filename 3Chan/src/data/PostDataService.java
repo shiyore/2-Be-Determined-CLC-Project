@@ -31,17 +31,17 @@ public class PostDataService implements DataAccessInterface<Post>
 		String url = "jdbc:postgresql://localhost:5432/postgres";
 		String username = "postgres";
 		String password = "root";
-		String sql = "SELECT * FROM tchan.users";
+		String sql = "SELECT * FROM tchan.posts";
 		List<Post> posts = new ArrayList<Post>();
 		try
 		{
 			conn = DriverManager.getConnection(url, username, password);
-			
+			//System.out.println("Connected to db");
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next())
 			{
-				posts.add(new Post(rs.getString("TITLE"), rs.getString("CONTENT"), rs.getInt("U_ID")));
+				posts.add(new Post(rs.getString("TITLE"), rs.getString("CONTENT"), rs.getInt("U_ID"), rs.getInt("ID")));
 			}
 			
 			rs.close();
@@ -49,6 +49,8 @@ public class PostDataService implements DataAccessInterface<Post>
 		catch (SQLException e)
 		{
 			e.printStackTrace();
+			System.out.println("Could not establish connection to the database");
+			System.exit(0);
 		}
 		finally
 		{
@@ -60,7 +62,8 @@ public class PostDataService implements DataAccessInterface<Post>
 				}
 				catch (SQLException e)
 				{
-					e.printStackTrace();
+					//e.printStackTrace();
+					System.out.println("Issue closing the connection");
 				}
 			}
 		}
@@ -159,8 +162,8 @@ public class PostDataService implements DataAccessInterface<Post>
 			conn = DriverManager.getConnection(url, username, password);
 			
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.close();
+			stmt.executeUpdate(sql);
+			//rs.close();
 		}
 		catch (SQLException e)
 		{

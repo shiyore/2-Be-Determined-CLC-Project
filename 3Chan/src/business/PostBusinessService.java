@@ -1,5 +1,6 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -27,6 +28,7 @@ public class PostBusinessService implements PostBusinessInterface{
      * Default constructor. 
      */
 	public Post post;
+	List<Post> posts = new ArrayList<Post>();
 	
     public PostBusinessService() {
         // TODO Auto-generated constructor stub
@@ -41,7 +43,7 @@ public class PostBusinessService implements PostBusinessInterface{
     
     public void setTitle(String pword) 
     {
-		post.setTitle(pword);
+		//post.setTitle(pword);
 	}
     
     public void setContent(String c)
@@ -71,11 +73,11 @@ public class PostBusinessService implements PostBusinessInterface{
 
 	@Override
 	public List<Post> getPosts() {
-		/*List<Post> posts = new ArrayList<Post>();
+
     	
     	PostDataService service = new PostDataService();
     	
-    	posts = service.findAll();*/
+    	posts = service.findAll();
     	
     	return service.findAll();
 		
@@ -84,6 +86,11 @@ public class PostBusinessService implements PostBusinessInterface{
 	@Override
 	public void setPosts(List<Post> posts) {
 		// TODO Auto-generated method stub
+	}
+	
+	public void deletePost(Post post) {
+		PostDataService service = new PostDataService();
+		service.delete(post);
 	}
 
 }
