@@ -72,19 +72,14 @@ public class PostBusinessService implements PostBusinessInterface{
 	}
 
 	@Override
-	public List<Post> getPosts() {
-		/*List<Post> posts = new ArrayList<Post>();
-    	
-    	PostDataService service = new PostDataService();
-    	
-    	posts = service.findAll();*/
-    	
+	public List<Post> getPosts() 
+	{
     	return service.findAll();
-		
 	}
 
 	@Override
-	public void setPosts(List<Post> postss) {
+	public void setPosts(List<Post> postss)
+	{
 		// TODO Auto-generated method stub
 		this.posts = postss;
 	}
@@ -100,5 +95,11 @@ public class PostBusinessService implements PostBusinessInterface{
 	{
 		
 	}
+	
+	
+	public void deletePost(Post post) {
+        PostDataService service = new PostDataService();
+        service.delete(post);
+    }
 
 }

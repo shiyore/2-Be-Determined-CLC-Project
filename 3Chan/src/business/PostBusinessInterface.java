@@ -13,5 +13,6 @@ public interface PostBusinessInterface {
 	public void setPosts(List<Post> posts);
 	public void newPost(Post post);
 	public void editPost(int id, String title, String content);
+	public void deletePost(Post post);
 }
 

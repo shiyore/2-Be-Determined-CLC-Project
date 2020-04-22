@@ -82,7 +82,7 @@ public class PostDataService implements DataAccessInterface<Post>
 		String content = post.getContent();
 		//int u_id = post.getUID();
 		int u_id = 1;
-		String sql = "INSERT INTO tchan.posts(id, title, content, u_id) VALUES (NULL, " + title + ", " + content + ", " + u_id + ")";
+		String sql = "INSERT INTO tchan.posts(title, content, u_id) VALUES ('" + title + "', '" + content + "', " + u_id + ")";
 		try
 		{
 			conn = DriverManager.getConnection(url, username, password);
