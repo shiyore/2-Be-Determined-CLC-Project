@@ -36,13 +36,12 @@ public class PostDataService implements DataAccessInterface<Post>
 		try
 		{
 			conn = DriverManager.getConnection(url, username, password);
-			System.out.println("HEYYYYYY GOT CONNNNNNNN");
 			
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next())
 			{
-				posts.add(new Post(rs.getString("title"), rs.getString("content"), rs.getInt("u_id")));
+				posts.add(new Post(rs.getInt("id"),rs.getString("title"), rs.getString("content"), rs.getInt("u_id")));
 			}
 			
 			rs.close();
@@ -50,7 +49,7 @@ public class PostDataService implements DataAccessInterface<Post>
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-			System.out.println("Aiden is bad at Overwatch");
+			
 			System.exit(0);
 		}
 		finally
@@ -64,7 +63,7 @@ public class PostDataService implements DataAccessInterface<Post>
 				catch (SQLException e)
 				{
 					//e.printStackTrace();
-					System.out.println("Aiden is a power bottom");
+					
 				}
 			}
 		}
@@ -211,7 +210,7 @@ public class PostDataService implements DataAccessInterface<Post>
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-			System.out.println("Aiden is bad at Overwatch");
+			
 			System.exit(0);
 		}
 		finally

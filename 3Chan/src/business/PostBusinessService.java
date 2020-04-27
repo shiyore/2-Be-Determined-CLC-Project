@@ -74,6 +74,7 @@ public class PostBusinessService implements PostBusinessInterface{
 	@Override
 	public List<Post> getPosts() 
 	{
+		System.out.println(service.findAll());
     	return service.findAll();
 	}
 
